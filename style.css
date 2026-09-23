@@ -11,6 +11,8 @@
             min-height: 100vh;
             overflow-x: hidden;
             width: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Video nền + Overlay */
@@ -20,13 +22,32 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 0;
+            pointer-events: none;
         }
         .background-video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             pointer-events: none;
+            background: #0b0b12;
+            transform: scale(1.05);
+            will-change: transform, opacity;
+            filter: saturate(0.9) contrast(1.08);
+            backface-visibility: hidden;
+            opacity: 0.95;
+        }
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1;
+        }
+        body.video-fallback {
+            background: linear-gradient(rgba(8, 10, 18, 0.7), rgba(8, 10, 18, 0.7)), url('images/logoxx88.png') center/cover no-repeat fixed;
+        }
+        body.video-fallback .video-container {
+            display: none;
         }
         .overlay {
             position: absolute;
@@ -45,7 +66,7 @@
             padding: 0;
             margin: 0;
             background: transparent;
-            z-index: 10;
+            z-index: 2;
             position: relative;
         }
         .top-logo img {
@@ -63,6 +84,8 @@
             padding: 40px 60px 80px;
             position: relative;
             z-index: 2;
+            flex: 1;
+            width: 100%;
         }
 
         .section-title {
@@ -227,6 +250,29 @@
             color: #ffd700;
             min-height: 54px;
             text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+        }
+
+        .site-footer {
+            width: 100%;
+            background: transparent;
+            border-top: none;
+            padding: 0;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-banner {
+            max-width: 620px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 0;
+            box-shadow: none;
+            object-fit: contain;
+            opacity: 1;
         }
 
         /* Responsive - Tablet và Desktop nhỏ */
